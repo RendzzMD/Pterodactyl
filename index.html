@@ -1,110 +1,112 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pterodactyl</title>
+  <title>502 Bad Gateway</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
       background-color: black;
-      color: lime;
-      font-family: monospace;
-      overflow: hidden;
-    }
-
-    .rain-container {
-      position: absolute;
-      width: 100%;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       height: 100vh;
+      flex-direction: column;
+      text-align: center;
+      position: relative;
       overflow: hidden;
-    }
+    }h1 {
+  font-size: 100px;
+  color: red;
+  animation: blink 1s infinite;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+}
 
-    .rain-text {
-      position: absolute;
-      font-size: 16px;
-      white-space: nowrap;
-      user-select: none;
-      animation: rainFall 5s linear infinite;
-    }
+p {
+  font-size: 20px;
+  margin-top: 10px;
+  color: white;
+  position: relative;
+  z-index: 2;
+}
 
-    @keyframes rainFall {
-      0% { transform: translateY(100vh); opacity: 1; }
-      100% { transform: translateY(-10vh); opacity: 0; }
-    }
+.custom-images {
+  margin-top: 30px;
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 2;
+}
 
-    .glitch-effect {
-      animation: glitchEffect 0.5s infinite;
-    }
+.custom-images img {
+  width: 120px;
+  height: auto;
+  border-radius: 10px;
+  border: 2px solid red;
+}
 
-    @keyframes glitchEffect {
-      0% { transform: translate(0, 0); }
-      25% { transform: translate(-5px, 5px) skewX(10deg); }
-      50% { transform: translate(5px, -5px) skewX(-10deg); }
-      75% { transform: translate(-3px, 3px) skewX(5deg); }
-      100% { transform: translate(0, 0); }
-    }
+.warning-text {
+  margin-top: 20px;
+  color: #ff4d4d;
+  font-size: 16px;
+  font-weight: bold;
+  position: relative;
+  z-index: 2;
+}
 
-    @keyframes zoomEffect {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-    }
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
 
-    audio {
-      display: none;
-    }
+.hacker-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: monospace;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.1);
+  white-space: nowrap;
+  opacity: 0.5;
+  filter: blur(3px);
+  pointer-events: none;
+}
+
+@keyframes scrollText {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+.hacker-text::before {
+  content: "HACKED SYSTEM ERROR 404 UNAUTHORIZED ACCESS DETECTED SYSTEM FAILURE WARNING THREAT DETECTED ";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 200%;
+  animation: scrollText 5s linear infinite;
+}
+
   </style>
 </head>
 <body>
-  <div class="rain-container" id="rainContainer"></div>
-
-  <audio id="errorSound" src="https://pomf2.lain.la/f/c2ilyw.mp3" loop></audio>
-
-  <script>
-    function startHackerRain() {
-      // Play error sound
-      const sound = document.getElementById('errorSound');
-      sound.play();
-
-      // Fullscreen mode
-      if (document.documentElement.requestFullscreen) {
-        document.documentElement.requestFullscreen();
-      }
-
-      // Bikin teks hujan terus naik
-      setInterval(() => {
-        let rainContainer = document.getElementById("rainContainer");
-        let rainText = document.createElement("div");
-        rainText.classList.add("rain-text");
-        rainText.innerText = `🚨 RENDZZ IS HERE - HACKED YOUR PHONE ${Math.floor(Math.random() * 99999)}x 🚨`;
-        rainText.style.left = `${Math.random() * 100}vw`;
-        rainText.style.animationDuration = `${2 + Math.random() * 3}s`;
-        rainContainer.appendChild(rainText);
-
-        setTimeout(() => {
-          rainContainer.removeChild(rainText);
-        }, 5000);
-      }, 100);
-
-      // Tambahkan efek glitch tiap 3 detik
-      setInterval(() => {
-        document.body.classList.add("glitch-effect");
-        setTimeout(() => {
-          document.body.classList.remove("glitch-effect");
-        }, 500);
-      }, 3000);
-
-      // Tambahkan efek zoom tiap 5 detik
-      setInterval(() => {
-        document.body.style.animation = "zoomEffect 2s ease-in-out";
-        setTimeout(() => {
-          document.body.style.animation = "";
-        }, 2000);
-      }, 5000);
-    }
-
-    window.onload = startHackerRain;
-  </script>
+  <div class="hacker-text"></div>
+  <h1>502</h1>
+  <p>Bad Gateway</p>  <div class="custom-images">
+    <img src="https://pomf2.lain.la/f/xzpgswrh.jpeg" alt="Custom1">
+    <img src="https://pomf2.lain.la/f/x8tsllf.png" alt="Custom2">
+    <img src="https://pomf2.lain.la/f/tmfe6p77.jpeg" alt="Custom3">
+  </div>  <div class="warning-text">This website has been taken down by Rendzz Cyber Security</div>
 </body>
 </html>
