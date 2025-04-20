@@ -1,112 +1,202 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>502 Bad Gateway</title>
+  <title>Dark Stresser - Kebijakan Privasi</title>
   <style>
-    body {
+    * {
       margin: 0;
-      background-color: black;
-      color: white;
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Courier New', monospace;
+      background: #0f0f0f;
+      color: #cfcfcf;
+      transition: background 0.8s ease, color 0.8s ease;
       height: 100vh;
+      display: flex;
       flex-direction: column;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }h1 {
-  font-size: 100px;
-  color: red;
-  animation: blink 1s infinite;
-  margin: 0;
-  position: relative;
-  z-index: 2;
-}
+      align-items: center;
+      justify-content: center;
+    }
 
-p {
-  font-size: 20px;
-  margin-top: 10px;
-  color: white;
-  position: relative;
-  z-index: 2;
-}
+    body.light {
+      background: #f5f5f5;
+      color: #111;
+    }
 
-.custom-images {
-  margin-top: 30px;
-  display: flex;
-  gap: 30px;
-  justify-content: center;
-  flex-wrap: wrap;
-  position: relative;
-  z-index: 2;
-}
+    #toggleTheme {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 1001;
+      transition: transform 0.3s;
+    }
 
-.custom-images img {
-  width: 120px;
-  height: auto;
-  border-radius: 10px;
-  border: 2px solid red;
-}
+    #toggleTheme:hover {
+      transform: scale(1.2);
+    }
 
-.warning-text {
-  margin-top: 20px;
-  color: #ff4d4d;
-  font-size: 16px;
-  font-weight: bold;
-  position: relative;
-  z-index: 2;
-}
+    #openPolicy {
+      padding: 12px 24px;
+      font-size: 16px;
+      border: 1px solid #00ff99;
+      color: #00ff99;
+      background: none;
+      border-radius: 10px;
+      box-shadow: 0 0 12px #00ff99;
+      cursor: pointer;
+      transition: 0.3s;
+    }
 
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.2; }
-}
+    body.light #openPolicy {
+      border: 1px solid #111;
+      color: #111;
+      box-shadow: 0 0 10px #aaa;
+    }
 
-.hacker-text {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  font-family: monospace;
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.1);
-  white-space: nowrap;
-  opacity: 0.5;
-  filter: blur(3px);
-  pointer-events: none;
-}
+    #openPolicy:hover {
+      background: #00ff99;
+      color: #000;
+    }
 
-@keyframes scrollText {
-  from {
-    transform: translateY(100%);
-  }
-  to {
-    transform: translateY(-100%);
-  }
-}
+    body.light #openPolicy:hover {
+      background: #000;
+      color: #fff;
+    }
 
-.hacker-text::before {
-  content: "HACKED SYSTEM ERROR 404 UNAUTHORIZED ACCESS DETECTED SYSTEM FAILURE WARNING THREAT DETECTED ";
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: 200%;
-  animation: scrollText 5s linear infinite;
-}
+    #policyBox {
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) scale(0.7);
+      width: 90%;
+      max-width: 600px;
+      background: rgba(25, 25, 25, 0.7);
+      border: 1px solid #00ff99;
+      border-radius: 18px;
+      padding: 25px;
+      box-shadow: 0 0 50px rgba(0, 255, 153, 0.4);
+      backdrop-filter: blur(20px);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.7s ease;
+      z-index: 999;
+    }
 
+    #policyBox.active {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    body.light #policyBox {
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid #111;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+      color: #000;
+    }
+
+    #policyBox h1 {
+      color: #00ff99;
+      border-bottom: 1px solid #00ff99;
+      margin-bottom: 15px;
+      padding-bottom: 8px;
+    }
+
+    body.light #policyBox h1 {
+      color: #111;
+      border-bottom: 1px solid #111;
+    }
+
+    #closePolicy {
+      margin-top: 20px;
+      padding: 10px 18px;
+      background: none;
+      border: 1px solid #00ff99;
+      color: #00ff99;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    body.light #closePolicy {
+      border: 1px solid #111;
+      color: #111;
+    }
+
+    #notification {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 255, 153, 0.8);
+      color: #000;
+      padding: 10px 20px;
+      border-radius: 10px;
+      display: none;
+      font-weight: bold;
+      z-index: 1000;
+      box-shadow: 0 0 10px #00ff99;
+      backdrop-filter: blur(10px);
+      animation: fadeInOut 3s ease forwards;
+    }
+
+    @keyframes fadeInOut {
+      0% { opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { opacity: 0; }
+    }
   </style>
 </head>
 <body>
-  <div class="hacker-text"></div>
-  <h1>502</h1>
-  <p>Bad Gateway</p>  <div class="custom-images">
-    <img src="https://pomf2.lain.la/f/xzpgswrh.jpeg" alt="Custom1">
-    <img src="https://pomf2.lain.la/f/x8tsllf.png" alt="Custom2">
-    <img src="https://pomf2.lain.la/f/tmfe6p77.jpeg" alt="Custom3">
-  </div>  <div class="warning-text">This website has been taken down by Rendzz Cyber Security</div>
+
+  <button id="toggleTheme" title="Ganti Tema">🌙</button>
+  <button id="openPolicy">Buka Kebijakan Privasi</button>
+
+  <div id="policyBox">
+    <h1>Kebijakan Privasi</h1>
+    <p><strong>Terakhir Diperbarui:</strong> 20 April 2025</p>
+    <p>Kami tidak mengumpulkan data pribadi. Aktivitas dicatat hanya untuk keamanan sistem. Semua alat hanya untuk tujuan edukasi. Penyalahgunaan menjadi tanggung jawab pengguna.</p>
+    <p>Tidak ada data yang dibagikan ke pihak ketiga. Situs ini mungkin menggunakan cookie untuk performa.</p>
+    <p><em>Contoh: Salah dalam mengetik, kami tidak bertanggung jawab.</em></p>
+    <button id="closePolicy">Tutup</button>
+  </div>
+
+  <div id="notification">Terima kasih telah membaca!</div>
+
+  <script>
+    const toggle = document.getElementById("toggleTheme");
+    const body = document.body;
+    const openBtn = document.getElementById("openPolicy");
+    const closeBtn = document.getElementById("closePolicy");
+    const policyBox = document.getElementById("policyBox");
+    const notification = document.getElementById("notification");
+
+    toggle.onclick = () => {
+      body.classList.toggle("light");
+      toggle.textContent = body.classList.contains("light") ? "☀️" : "🌙";
+    };
+
+    openBtn.onclick = () => {
+      policyBox.classList.add("active");
+      notification.style.display = "block";
+      setTimeout(() => {
+        notification.style.display = "none";
+      }, 3000);
+    };
+
+    closeBtn.onclick = () => {
+      policyBox.classList.remove("active");
+    };
+  </script>
+
 </body>
 </html>
