@@ -1,202 +1,556 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Dark Stresser - Kebijakan Privasi</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Courier New', monospace;
-      background: #0f0f0f;
-      color: #cfcfcf;
-      transition: background 0.8s ease, color 0.8s ease;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    body.light {
-      background: #f5f5f5;
-      color: #111;
-    }
-
-    #toggleTheme {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: none;
-      border: none;
-      font-size: 24px;
-      cursor: pointer;
-      z-index: 1001;
-      transition: transform 0.3s;
-    }
-
-    #toggleTheme:hover {
-      transform: scale(1.2);
-    }
-
-    #openPolicy {
-      padding: 12px 24px;
-      font-size: 16px;
-      border: 1px solid #00ff99;
-      color: #00ff99;
-      background: none;
-      border-radius: 10px;
-      box-shadow: 0 0 12px #00ff99;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    body.light #openPolicy {
-      border: 1px solid #111;
-      color: #111;
-      box-shadow: 0 0 10px #aaa;
-    }
-
-    #openPolicy:hover {
-      background: #00ff99;
-      color: #000;
-    }
-
-    body.light #openPolicy:hover {
-      background: #000;
-      color: #fff;
-    }
-
-    #policyBox {
-      position: fixed;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%) scale(0.7);
-      width: 90%;
-      max-width: 600px;
-      background: rgba(25, 25, 25, 0.7);
-      border: 1px solid #00ff99;
-      border-radius: 18px;
-      padding: 25px;
-      box-shadow: 0 0 50px rgba(0, 255, 153, 0.4);
-      backdrop-filter: blur(20px);
-      opacity: 0;
-      pointer-events: none;
-      transition: all 0.7s ease;
-      z-index: 999;
-    }
-
-    #policyBox.active {
-      transform: translate(-50%, -50%) scale(1);
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    body.light #policyBox {
-      background: rgba(255, 255, 255, 0.75);
-      border: 1px solid #111;
-      box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-      color: #000;
-    }
-
-    #policyBox h1 {
-      color: #00ff99;
-      border-bottom: 1px solid #00ff99;
-      margin-bottom: 15px;
-      padding-bottom: 8px;
-    }
-
-    body.light #policyBox h1 {
-      color: #111;
-      border-bottom: 1px solid #111;
-    }
-
-    #closePolicy {
-      margin-top: 20px;
-      padding: 10px 18px;
-      background: none;
-      border: 1px solid #00ff99;
-      color: #00ff99;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    body.light #closePolicy {
-      border: 1px solid #111;
-      color: #111;
-    }
-
-    #notification {
-      position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(0, 255, 153, 0.8);
-      color: #000;
-      padding: 10px 20px;
-      border-radius: 10px;
-      display: none;
-      font-weight: bold;
-      z-index: 1000;
-      box-shadow: 0 0 10px #00ff99;
-      backdrop-filter: blur(10px);
-      animation: fadeInOut 3s ease forwards;
-    }
-
-    @keyframes fadeInOut {
-      0% { opacity: 0; }
-      10% { opacity: 1; }
-      90% { opacity: 1; }
-      100% { opacity: 0; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎉 Ultra Happy Birthday Rendzz! 🎉</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Birthstone+Bounce:wght@400;700&display=swap');
+        
+        :root {
+            --primary: #ff6b6b;
+            --secondary: #794afa;
+            --success: #4caf50;
+            --dark: #1e1e1e;
+            --light: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #000428 0%, #004e92 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            perspective: 1000px;
+        }
+        
+        .container {
+            position: relative;
+            width: 90%;
+            max-width: 600px;
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            background-color: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 30px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.5),
+                        0 0 30px rgba(255, 215, 0, 0.6),
+                        inset 0 0 20px rgba(255, 255, 255, 0.2);
+            text-align: center;
+            color: white;
+            z-index: 1;
+            overflow: hidden;
+            animation: fadeIn 1s ease-out, float 6s ease-in-out infinite;
+            transform-style: preserve-3d;
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .container.sent {
+            background-color: rgba(0, 100, 0, 0.4);
+            box-shadow: 0 8px 32px 0 rgba(31, 135, 38, 0.5),
+                        0 0 30px rgba(0, 255, 100, 0.6),
+                        inset 0 0 20px rgba(255, 255, 255, 0.3);
+            animation: none;
+            transform: scale(1.02);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(to right, #ff8a00, #e52e71);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: 'Birthstone Bounce', cursive;
+            letter-spacing: 2px;
+            transition: all 0.5s ease;
+        }
+        
+        .container.sent h1 {
+            background: linear-gradient(to right, #00b09b, #96c93d);
+            transform: scale(1.05);
+        }
+        
+        .birthday-icon {
+            font-size: 0;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            transition: all 0.5s ease;
+        }
+        
+        .birthday-icon i {
+            font-size: 3rem;
+            animation: bounce 2s infinite;
+            color: #FFD700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+        }
+        
+        .birthday-icon i:nth-child(1) { animation-delay: 0.1s; color: #FF6B6B; }
+        .birthday-icon i:nth-child(2) { animation-delay: 0.3s; color: #794AFA; }
+        .birthday-icon i:nth-child(3) { animation-delay: 0.5s; color: #00CCFF; }
+        .birthday-icon i:nth-child(4) { animation-delay: 0.7s; color: #FF00CC; }
+        
+        .container.sent .birthday-icon {
+            transform: scale(1.2);
+        }
+        
+        .container.sent .birthday-icon i {
+            animation: pulse 1.5s infinite;
+            color: #4CAF50;
+        }
+        
+        .form-section {
+            transition: all 0.5s ease;
+            max-height: 500px;
+            overflow: hidden;
+            opacity: 1;
+        }
+        
+        .container.sent .form-section {
+            max-height: 0;
+            opacity: 0;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .success-section {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: all 0.5s ease;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container.sent .success-section {
+            max-height: 500px;
+            opacity: 1;
+            margin: 20px 0;
+            padding: 0;
+        }
+        
+        .form-group {
+            margin: 25px 0;
+            position: relative;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 12px;
+            background-color: rgba(255, 255, 255, 0.15);
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            background-color: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+        }
+        
+        input::placeholder, textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        button {
+            background: linear-gradient(45deg, #ff6b6b, #794afa);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container.sent button {
+            background: linear-gradient(45deg, #00b09b, #96c93d);
+        }
+        
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        button:active {
+            transform: translateY(1px);
+        }
+        
+        button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+        
+        button:hover::after {
+            transform: translateX(100%);
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background-color: #f00;
+            border-radius: 50%;
+            animation: confetti-fall 5s linear forwards;
+            z-index: -1;
+            opacity: 0;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes confetti-fall {
+            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        
+        .icon-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .icon {
+            position: absolute;
+            font-size: 24px;
+            animation: icon-fall linear forwards;
+            color: #FFD700;
+            text-shadow: 0 0 8px currentColor;
+        }
+        
+        @keyframes icon-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+        
+        .success-icon {
+            font-size: 4rem;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .success-icon i {
+            animation: pulse 1.5s infinite, float 3s ease-in-out infinite;
+        }
+        
+        .success-icon i:nth-child(1) { animation-delay: 0.1s; color: #4CAF50; }
+        .success-icon i:nth-child(2) { animation-delay: 0.3s; color: #8BC34A; }
+        .success-icon i:nth-child(3) { animation-delay: 0.5s; color: #CDDC39; }
+        
+        .audio-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        .firework {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px 2px;
+            animation: firework-anim 2s ease-out forwards;
+            opacity: 0;
+        }
+        
+        @keyframes firework-anim {
+            0% { transform: translate(var(--x), var(--y)); opacity: 1; }
+            100% { transform: translate(var(--x-end), var(--y-end)); opacity: 0; }
+        }
+    </style>
 </head>
 <body>
-
-  <button id="toggleTheme" title="Ganti Tema">🌙</button>
-  <button id="openPolicy">Buka Kebijakan Privasi</button>
-
-  <div id="policyBox">
-    <h1>Kebijakan Privasi</h1>
-    <p><strong>Terakhir Diperbarui:</strong> 20 April 2025</p>
-    <p>Kami tidak mengumpulkan data pribadi. Aktivitas dicatat hanya untuk keamanan sistem. Semua alat hanya untuk tujuan edukasi. Penyalahgunaan menjadi tanggung jawab pengguna.</p>
-    <p>Tidak ada data yang dibagikan ke pihak ketiga. Situs ini mungkin menggunakan cookie untuk performa.</p>
-    <p><em>Contoh: Salah dalam mengetik, kami tidak bertanggung jawab.</em></p>
-    <button id="closePolicy">Tutup</button>
-  </div>
-
-  <div id="notification">Terima kasih telah membaca!</div>
-
-  <script>
-    const toggle = document.getElementById("toggleTheme");
-    const body = document.body;
-    const openBtn = document.getElementById("openPolicy");
-    const closeBtn = document.getElementById("closePolicy");
-    const policyBox = document.getElementById("policyBox");
-    const notification = document.getElementById("notification");
-
-    toggle.onclick = () => {
-      body.classList.toggle("light");
-      toggle.textContent = body.classList.contains("light") ? "☀️" : "🌙";
-    };
-
-    openBtn.onclick = () => {
-      policyBox.classList.add("active");
-      notification.style.display = "block";
-      setTimeout(() => {
-        notification.style.display = "none";
-      }, 3000);
-    };
-
-    closeBtn.onclick = () => {
-      policyBox.classList.remove("active");
-    };
-  </script>
-
+    <div class="icon-rain" id="iconRain"></div>
+    <div class="audio-control" id="audioControl">
+        <i class="fas fa-volume-up"></i>
+    </div>
+    
+    <div class="container" id="birthdayContainer">
+        <div class="birthday-icon">
+            <i class="fas fa-birthday-cake"></i>
+            <i class="fas fa-gift"></i>
+            <i class="fas fa-glass-cheers"></i>
+            <i class="fas fa-star"></i>
+        </div>
+        <h1>Happy Birthday Rendzz!</h1>
+        
+        <div class="form-section">
+            <p>Kirim pesan ucapan untuk Rendzz yang akan langsung masuk ke Telegram!</p>
+            
+            <form id="birthdayForm">
+                <div class="form-group">
+                    <input type="text" id="name" placeholder="✨ Masukkan Nama Kamu" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" rows="5" placeholder="🎁 Tulis Pesan Ucapan..." required></textarea>
+                </div>
+                <button type="submit" id="submitBtn">
+                    <i class="fas fa-paper-plane"></i> Kirim Ucapan
+                </button>
+            </form>
+        </div>
+        
+        <div class="success-section">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-smile-wink"></i>
+            </div>
+            <h2>Terima Kasih!</h2>
+            <p>Pesan ucapanmu sudah terkirim ke Rendzz!</p>
+            <p>Semoga harimu menyenangkan!</p>
+            <button id="sendAnotherBtn">
+                <i class="fas fa-redo"></i> Kirim Pesan Lain
+            </button>
+        </div>
+    </div>
+    
+    <audio id="bgMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="successSound">
+        <source src="https://www.soundjay.com/misc/sounds/magic-chime-01.mp3" type="audio/mpeg">
+    </audio>
+    
+    <script>
+        // Icon options for the rain
+        const icons = [
+            'fas fa-birthday-cake', 'fas fa-gift', 'fas fa-star', 
+            'fas fa-heart', 'fas fa-glass-cheers', 'fas fa-music',
+            'fas fa-bell', 'fas fa-rocket', 'fas fa-crown'
+        ];
+        
+        // Colors for the icons
+        const colors = ['#FFD700', '#FF6B6B', '#794AFA', '#00CCFF', '#FF00CC', '#4CAF50'];
+        
+        // Create icon rain
+        function createIconRain() {
+            const container = document.getElementById('iconRain');
+            
+            setInterval(() => {
+                const icon = document.createElement('i');
+                icon.className = `${icons[Math.floor(Math.random() * icons.length)]} icon`;
+                icon.style.left = Math.random() * 100 + 'vw';
+                icon.style.animationDuration = Math.random() * 3 + 2 + 's';
+                icon.style.color = colors[Math.floor(Math.random() * colors.length)];
+                icon.style.fontSize = Math.random() * 20 + 16 + 'px';
+                container.appendChild(icon);
+                
+                // Remove icon after animation completes
+                setTimeout(() => {
+                    icon.remove();
+                }, 5000);
+            }, 150);
+        }
+        
+        // Create optimized confetti with icons
+        function createConfetti() {
+            const container = document.querySelector('body');
+            const confettiCount = 50;
+            const fragment = document.createDocumentFragment();
+            
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('i');
+                confetti.className = `${icons[Math.floor(Math.random() * icons.length)]} confetti`;
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.color = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.fontSize = Math.random() * 20 + 16 + 'px';
+                confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
+                confetti.style.animationDelay = Math.random() * 2 + 's';
+                fragment.appendChild(confetti);
+                
+                setTimeout(() => {
+                    if (confetti.parentNode) {
+                        confetti.remove();
+                    }
+                }, 5000);
+            }
+            
+            container.appendChild(fragment);
+        }
+        
+        // Create fireworks
+        function createFireworks() {
+            const container = document.querySelector('body');
+            const fireworkCount = 20;
+            
+            for (let i = 0; i < fireworkCount; i++) {
+                const firework = document.createElement('div');
+                firework.className = 'firework';
+                firework.style.color = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Random start position (near center)
+                const startX = 50 + (Math.random() * 20 - 10);
+                const startY = 50 + (Math.random() * 20 - 10);
+                
+                // Random end position (exploding outward)
+                const angle = Math.random() * Math.PI * 2;
+                const distance = 10 + Math.random() * 30;
+                const endX = Math.cos(angle) * distance;
+                const endY = Math.sin(angle) * distance;
+                
+                firework.style.setProperty('--x', `${startX}vw`);
+                firework.style.setProperty('--y', `${startY}vh`);
+                firework.style.setProperty('--x-end', `${startX + endX}vw`);
+                firework.style.setProperty('--y-end', `${startY + endY}vh`);
+                
+                container.appendChild(firework);
+                
+                setTimeout(() => {
+                    firework.remove();
+                }, 2000);
+            }
+        }
+        
+        // Audio control
+        const bgMusic = document.getElementById('bgMusic');
+        const successSound = document.getElementById('successSound');
+        const audioControl = document.getElementById('audioControl');
+        
+        audioControl.addEventListener('click', function() {
+            if (bgMusic.paused) {
+                bgMusic.play();
+                audioControl.innerHTML = '<i class="fas fa-volume-up"></i>';
+            } else {
+                bgMusic.pause();
+                audioControl.innerHTML = '<i class="fas fa-volume-mute"></i>';
+            }
+        });
+        
+        // Try to play music automatically (may be blocked by browser)
+        document.addEventListener('click', function() {
+            if (bgMusic.paused) {
+                bgMusic.play().catch(e => console.log('Auto-play prevented'));
+            }
+        }, { once: true });
+        
+        // Form submission
+        document.getElementById('birthdayForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const message = document.getElementById('message').value;
+            const submitBtn = document.getElementById('submitBtn');
+            const container = document.getElementById('birthdayContainer');
+            
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
+            
+            const botToken = '7286349002:AAFKmjiYlU75dT0qiAsVlr8Fnb8UQxwz_E4';
+            const chatId = '7696821722';
+            const text = `🎉 *Pesan Ucapan Baru* 🎉\n\n*Dari:* ${name}\n*Pesan:* ${message}`;
+            
+            fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: text,
+                    parse_mode: 'Markdown'
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Play success sound
+                successSound.play();
+                
+                // Change to success state
+                container.classList.add('sent');
+                createConfetti();
+                createFireworks();
+                
+                // Reset form
+                document.getElementById('birthdayForm').reset();
+                
+                // Enable send another button
+                document.getElementById('sendAnotherBtn').addEventListener('click', function() {
+                    container.classList.remove('sent');
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Kirim Ucapan';
+                    submitBtn.disabled = false;
+                });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                submitBtn.innerHTML = '<i class="fas fa-exclamation-circle"></i> Gagal, Coba Lagi';
+                submitBtn.disabled = false;
+            });
+        });
+        
+        // Initialize effects
+        window.addEventListener('DOMContentLoaded', function() {
+            createIconRain();
+            
+            // Try to play background music
+            bgMusic.volume = 0.3;
+            bgMusic.play().catch(e => console.log('Auto-play prevented'));
+        });
+    </script>
 </body>
 </html>
